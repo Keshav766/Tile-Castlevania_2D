@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3624505395282758126
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3235174145139029524, guid: 0e64f9f6a3dbe60438f7436a8861d1ff, type: 3}
+      propertyPath: m_Pitch
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235174145139029524, guid: 0e64f9f6a3dbe60438f7436a8861d1ff, type: 3}
+      propertyPath: m_Volume
+      value: 0.151
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813009012513539690, guid: 0e64f9f6a3dbe60438f7436a8861d1ff, type: 3}
+      propertyPath: m_Name
+      value: Huge Coin Variiant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813009012513539691, guid: 0e64f9f6a3dbe60438f7436a8861d1ff, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813009012513539691, guid: 0e64f9f6a3dbe60438f7436a8861d1ff, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.76906
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813009012513539691, guid: 0e64f9f6a3dbe60438f7436a8861d1ff, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.76906
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813009012513539691, guid: 0e64f9f6a3dbe60438f7436a8861d1ff, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.76906
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813009012513539691, guid: 0e64f9f6a3dbe60438f7436a8861d1ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -28.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813009012513539691, guid: 0e64f9f6a3dbe60438f7436a8861d1ff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813009012513539691, guid: 0e64f9f6a3dbe60438f7436a8861d1ff, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.3102138
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813009012513539691, guid: 0e64f9f6a3dbe60438f7436a8861d1ff, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813009012513539691, guid: 0e64f9f6a3dbe60438f7436a8861d1ff, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813009012513539691, guid: 0e64f9f6a3dbe60438f7436a8861d1ff, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813009012513539691, guid: 0e64f9f6a3dbe60438f7436a8861d1ff, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813009012513539691, guid: 0e64f9f6a3dbe60438f7436a8861d1ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813009012513539691, guid: 0e64f9f6a3dbe60438f7436a8861d1ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813009012513539691, guid: 0e64f9f6a3dbe60438f7436a8861d1ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813009012513539695, guid: 0e64f9f6a3dbe60438f7436a8861d1ff, type: 3}
+      propertyPath: pointsForCoinPickup
+      value: 500
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0e64f9f6a3dbe60438f7436a8861d1ff, type: 3}
