@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     BoxCollider2D myFeetCollider;
     float gravityScaleAtStart;
 
-    bool isAlive = true;
+    public bool isAlive = true;
 
     void Start()
     {

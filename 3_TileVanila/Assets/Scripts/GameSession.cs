@@ -4,33 +4,72 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
+
 public class GameSession : MonoBehaviour
 {
 
     [SerializeField] int playerLives = 3;
     [SerializeField] int playerScore = 0;
+    [SerializeField] string currPlayerName = "Bubia";
+    [SerializeField] int highScore;
+    [SerializeField] string highScorePlayerName;
 
     [SerializeField] TextMeshProUGUI livesText;
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI gameOver;
+    [SerializeField] TextMeshProUGUI highScoreText;
+    [SerializeField] TextMeshProUGUI playerNameText;
+    [SerializeField] Button startButton;
+    [SerializeField] Button restartButton;
+    [SerializeField] GameObject highScoreDisplayer;
+    [SerializeField] GameObject TitleScreen;
+
+    PlayerMovement playerScriptRef;
+    // Arrow arrowScriptRef;
 
     void Awake()
     {
-        int numGameSessions = FindObjectsOfType<GameSession>().Length;
-        if (numGameSessions > 1)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }
+        // TitleScreen.SetActive(true);
+        // playerScriptRef = FindObjectOfType<PlayerMovement>();
+        // // // arrowScriptRef = FindObjectOfType<Arrow>();
+        // playerScriptRef.enabled = false;
+        // // // arrowScriptRef.enabled = false;
+        // startButton.onClick.AddListener(StartGame);
+        // void StartGame()
+        // {
+            // TitleScreen.SetActive(false);
+            // playerScriptRef.enabled = true;
+            // arrowScriptRef.enabled = true;
+            int numGameSessions = FindObjectsOfType<GameSession>().Length;
+            highScore = PlayerPrefs.GetInt("HIGHSCORE");
+            highScorePlayerName = PlayerPrefs.GetString("HIGHSCOREPLAYERNAME");
+
+            if (numGameSessions > 1)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                DontDestroyOnLoad(gameObject);
+            }
+        // }
     }
+
+   
 
     void Start()
     {
         livesText.text = playerLives.ToString();
         scoreText.text = playerScore.ToString();
+
+        // playerScriptRef = FindObjectOfType<PlayerMovement>();
+        // // arrowScriptRef = FindObjectOfType<Arrow>();
+        // playerScriptRef.enabled = false;
+        // // arrowScriptRef.enabled = false;
+        // startButton.onClick.AddListener(StartGame);
     }
+
 
     public void AddToScore(int pointsToAdd)
     {
@@ -43,11 +82,17 @@ public class GameSession : MonoBehaviour
     {
         if (playerLives > 1)
         {
-            TakeLife();
+            Invoke("TakeLife", 1f);
         }
         else
         {
-            ResetGameSession();
+            playerLives--;
+            livesText.text = playerLives.ToString();
+            gameOver.gameObject.SetActive(true);
+            restartButton.gameObject.SetActive(true);
+            CheckHighscore();
+            highScoreDisplayer.SetActive(true);
+            // ResetGameSession();
         }
     }
 
@@ -59,10 +104,23 @@ public class GameSession : MonoBehaviour
         livesText.text = playerLives.ToString();
     }
 
-    void ResetGameSession()
+    public void ResetGameSession()
     {
         FindObjectOfType<ScenePersists>().ResetScenePersists();
+        //    gameOver.gameObject.SetActive(false);
         SceneManager.LoadScene(0);
         Destroy(gameObject);
+    }
+
+    public void CheckHighscore()
+    {
+        if (playerScore > highScore)
+        {
+            highScore = playerScore;
+            PlayerPrefs.SetInt("HIGHSCORE", highScore);
+            PlayerPrefs.SetString("HIGHSCOREPLAYERNAME", currPlayerName);
+        }
+        highScoreText.text = highScore.ToString();
+        playerNameText.text = highScorePlayerName;
     }
 }

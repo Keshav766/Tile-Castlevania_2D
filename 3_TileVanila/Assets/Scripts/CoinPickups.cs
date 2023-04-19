@@ -7,6 +7,11 @@ public class CoinPickups : MonoBehaviour
 
     [SerializeField] AudioClip coinPickupSFX;
     [SerializeField] int pointsForCoinPickup = 100;
+    PlayerMovement plrMovScrRef;
+    void Start()
+    {
+        plrMovScrRef = FindObjectOfType<PlayerMovement>();
+    }
 
     bool wasCollected = false;
 
