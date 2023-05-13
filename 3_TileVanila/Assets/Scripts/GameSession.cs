@@ -11,9 +11,10 @@ public class GameSession : MonoBehaviour
 
     [SerializeField] int playerLives = 3;
     [SerializeField] int playerScore = 0;
-    [SerializeField] string currPlayerName = "Bubia";
+    [SerializeField] string currPlayerName;
     [SerializeField] int highScore;
     [SerializeField] string highScorePlayerName;
+    public bool hasDisplayedTS = false;
 
     [SerializeField] TextMeshProUGUI livesText;
     [SerializeField] TextMeshProUGUI scoreText;
@@ -24,45 +25,56 @@ public class GameSession : MonoBehaviour
     [SerializeField] Button restartButton;
     [SerializeField] GameObject highScoreDisplayer;
     [SerializeField] GameObject TitleScreen;
+    [SerializeField] TMP_InputField inputPlayerNameText;
 
     PlayerMovement playerScriptRef;
     // Arrow arrowScriptRef;
 
     void Awake()
     {
-        // TitleScreen.SetActive(true);
-        // playerScriptRef = FindObjectOfType<PlayerMovement>();
-        // // // arrowScriptRef = FindObjectOfType<Arrow>();
-        // playerScriptRef.enabled = false;
-        // // // arrowScriptRef.enabled = false;
-        // startButton.onClick.AddListener(StartGame);
-        // void StartGame()
-        // {
-            // TitleScreen.SetActive(false);
-            // playerScriptRef.enabled = true;
-            // arrowScriptRef.enabled = true;
-            int numGameSessions = FindObjectsOfType<GameSession>().Length;
-            highScore = PlayerPrefs.GetInt("HIGHSCORE");
-            highScorePlayerName = PlayerPrefs.GetString("HIGHSCOREPLAYERNAME");
+      
+        int numGameSessions = FindObjectsOfType<GameSession>().Length;
+        highScore = PlayerPrefs.GetInt("HIGHSCORE");
+        highScorePlayerName = PlayerPrefs.GetString("HIGHSCOREPLAYERNAME");
 
-            if (numGameSessions > 1)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                DontDestroyOnLoad(gameObject);
-            }
-        // }
+        if (numGameSessions > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
-   
+    public void TakeName()
+    {
+        currPlayerName = inputPlayerNameText.text;
+    }
 
     void Start()
     {
         livesText.text = playerLives.ToString();
         scoreText.text = playerScore.ToString();
 
+          if (!hasDisplayedTS)
+        {
+
+            TitleScreen.SetActive(true);
+            playerScriptRef = FindObjectOfType<PlayerMovement>();
+            // // arrowScriptRef = FindObjectOfType<Arrow>();
+            playerScriptRef.enabled = false;
+            // // arrowScriptRef.enabled = false;
+            startButton.onClick.AddListener(StartGame);
+                hasDisplayedTS = true;
+            void StartGame()
+            {
+                // currPlayerName = inputPlayerNameText.text;
+                TitleScreen.SetActive(false);
+                playerScriptRef.enabled = true;
+                // arrowScriptRef.enabled = true;
+            }
+        }
         // playerScriptRef = FindObjectOfType<PlayerMovement>();
         // // arrowScriptRef = FindObjectOfType<Arrow>();
         // playerScriptRef.enabled = false;
@@ -76,6 +88,7 @@ public class GameSession : MonoBehaviour
         playerScore += pointsToAdd;
         scoreText.text = playerScore.ToString();
 
+        
     }
 
     public void ProcessPlayerDeath()
@@ -121,6 +134,6 @@ public class GameSession : MonoBehaviour
             PlayerPrefs.SetString("HIGHSCOREPLAYERNAME", currPlayerName);
         }
         highScoreText.text = highScore.ToString();
-        playerNameText.text = highScorePlayerName;
+        playerNameText.text = PlayerPrefs.GetString("HIGHSCOREPLAYERNAME");
     }
 }

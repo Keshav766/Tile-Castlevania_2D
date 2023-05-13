@@ -10,6 +10,8 @@ public class Arrow : MonoBehaviour
     PlayerMovement player;
     float xSpeed;
 
+    public AudioClip enemyDeath;
+
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -28,6 +30,7 @@ public class Arrow : MonoBehaviour
         if (other.tag == "Enemies")
         {
             Destroy(other.gameObject);
+            AudioSource.PlayClipAtPoint(enemyDeath, Camera.main.transform.position);
         }
         Destroy(gameObject);
     }

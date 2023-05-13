@@ -7,12 +7,13 @@ public class LevelExit : MonoBehaviour
 {
     [SerializeField] float levelLoadDelay = 1f;
 
-
+    public AudioClip exitAudio;
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
+            AudioSource.PlayClipAtPoint(exitAudio, Camera.main.transform.position);
             StartCoroutine(LoadNextLevel());
         }
     }

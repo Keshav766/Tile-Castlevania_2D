@@ -7,6 +7,7 @@ public class CoinPickups : MonoBehaviour
 
     [SerializeField] AudioClip coinPickupSFX;
     [SerializeField] int pointsForCoinPickup = 100;
+    [SerializeField] float audioVolume = 1f;
     PlayerMovement plrMovScrRef;
     void Start()
     {
@@ -21,7 +22,7 @@ public class CoinPickups : MonoBehaviour
         {
             wasCollected = true;
             FindObjectOfType<GameSession>().AddToScore(pointsForCoinPickup);
-            AudioSource.PlayClipAtPoint(coinPickupSFX, Camera.main.transform.position);
+            AudioSource.PlayClipAtPoint(coinPickupSFX, Camera.main.transform.position, audioVolume);
             gameObject.SetActive(false);
             Destroy(gameObject);
         }

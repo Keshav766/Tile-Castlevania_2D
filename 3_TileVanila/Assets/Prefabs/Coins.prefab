@@ -116,8 +116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc1136a6fb75554cb15aa6606d705d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinPickupSFX: {fileID: 8300000, guid: 3be25e0e565f1f14e957d59a7843b0e9, type: 3}
+  coinPickupSFX: {fileID: 8300000, guid: 6efee664f54dce441930b695acfa0f13, type: 3}
   pointsForCoinPickup: 100
+  audioVolume: 0.8
 --- !u!95 &4691881250168199751
 Animator:
   serializedVersion: 4
@@ -150,7 +151,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.501
+  m_Volume: 0.314
   m_Pitch: 0.5
   Loop: 0
   Mute: 0

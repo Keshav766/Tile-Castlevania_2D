@@ -19,6 +19,11 @@ public class PlayerMovement : MonoBehaviour
     BoxCollider2D myFeetCollider;
     float gravityScaleAtStart;
 
+    AudioSource myAudio;
+    public AudioClip arrowFire;
+    public AudioClip deathSound;
+    public AudioClip BGM;
+
     public bool isAlive = true;
 
     void Start()
@@ -28,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         myBodyCollider = GetComponent<CapsuleCollider2D>();
         myFeetCollider = GetComponent<BoxCollider2D>();
         gravityScaleAtStart = myRigidBody.gravityScale;
+        // AudioSource.PlayClipAtPoint(BGM, Camera.main.transform.position);
     }
 
 
@@ -38,12 +44,17 @@ public class PlayerMovement : MonoBehaviour
         FlipSprite();
         ClimbLadder();
         Die();
+        if(!myAudio.isPlaying)
+        {
+            myAudio.Play();
+        }
     }
 
     void OnFire(InputValue value)
     {
          if (isAlive == false) { return; }
         Instantiate(Arrow, Bow.position, transform.rotation);
+        AudioSource.PlayClipAtPoint(arrowFire, Camera.main.transform.position);
     }
 
 
@@ -116,6 +127,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemies","Hazards")))
         {
+            AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position);
             isAlive = false;
             myAnimator.SetTrigger("Dying");
             myRigidBody.velocity = deathKick;

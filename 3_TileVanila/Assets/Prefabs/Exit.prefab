@@ -124,3 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5005002e628a9a7479f5a5cf44d34dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelLoadDelay: 1
+  exitAudio: {fileID: 8300000, guid: c224475e92b28d141a8c07a65882c888, type: 3}
